@@ -1,6 +1,8 @@
+********************************************************************************************************************
 
-******************************************************************************************************************************
+Task - 1 : Run a simple Dataflow job
 
+bq mk lab
 
 gsutil cp gs://cloud-training/gsp323/lab.csv .
 
@@ -10,9 +12,17 @@ gsutil cp gs://cloud-training/gsp323/lab.schema .
 
 cat lab.schema
 
+***************************************************************************************************************************
+Task - 2 : Run a simple Dataproc job
 
+    This has to be done mannually.
+****************************************************************************************************************   
+Task - 3 : Run a simple Dataprep job
 
+This has to be done mannually.
 
+********************************************************************************************************************
+Task - 4 : AI
 
 gcloud iam service-accounts create my-natlang-sa \
   --display-name "my natural language service account"
@@ -26,23 +36,21 @@ gcloud auth activate-service-account my-natlang-sa@${GOOGLE_CLOUD_PROJECT}.iam.g
 
 gcloud ml language analyze-entities --content="Old Norse texts portray Odin as one-eyed and long-bearded, frequently wielding a spear named Gungnir and wearing a cloak and a broad hat." > result.json
 
-gcloud auth login 
-
-
-
-
-------------->>>>>>>>>>>>>>>>>Copy the token from the link provided  
-
+gcloud auth login
+(Copy the token from the link provided)
 
 
 gsutil cp result.json gs://YOUR_PROJECT-marking/task4-cnl.result
 
+****************************************************************************************************
+Create an API key and export as API_KEY variable.
 
-
+export API_KEY={Replace with API KEY}
 
 
 nano request.json
 
+Add this content:
 
 {
   "config": {
@@ -54,13 +62,11 @@ nano request.json
   }
 }
 
-
-
+*************************************************************************************************************************************
 curl -s -X POST -H "Content-Type: application/json" --data-binary @request.json \
 "https://speech.googleapis.com/v1/speech:recognize?key=${API_KEY}" > result.json
 
 gsutil cp result.json gs://YOUR_PROJECT-marking/task4-gcs.result
-
 
 
 gcloud iam service-accounts create quickstart
@@ -73,6 +79,8 @@ export ACCESS_TOKEN=$(gcloud auth print-access-token)
 
 
 nano request.json
+**************************************************************
+Add this content:
 
 {
    "inputUri":"gs://spls/gsp154/video/chicago.mp4",
@@ -80,8 +88,8 @@ nano request.json
        "TEXT_DETECTION"
    ]
 }
-
-
+****************************************************************************
+Now add the following commands on the command line:
 
 curl -s -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $ACCESS_TOKEN" \
@@ -95,4 +103,5 @@ curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $ACCESS_TO
 
 gsutil cp result1.json gs://YOUR_PROJECT-marking/task4-gvi.result
 
-**************************************************************************************************************************
+
+
