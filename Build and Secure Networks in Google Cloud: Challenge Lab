@@ -39,7 +39,7 @@ gcloud compute instances add-tags juice-shop --tags=internal-ssh-ingress --zone=
 Task 6:In the Compute Engine instances page, click the SSH button for the bastion host. 
 Once connected, SSH to juice-shop.In the Compute Engine instances page, click the SSH button for the bastion host. Once connected, SSH to juice-shop.
 
-ssh [EXTERNAL IP address of juice-shop]
+ssh [INTERNAL IP address of juice-shop]
 
 
 
