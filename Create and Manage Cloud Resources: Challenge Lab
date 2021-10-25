@@ -5,7 +5,7 @@
 
 Task1
 
-gcloud compute instances create nucleus-jumphost \
+gcloud compute instances create nucleus-jumphost-426 \
           --network nucleus-vpc \
           --zone us-east1-b  \
           --machine-type f1-micro  \
